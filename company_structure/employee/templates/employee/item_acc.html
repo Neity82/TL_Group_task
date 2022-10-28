@@ -1,0 +1,23 @@
+{% load employee_tags %}
+
+<div class="accordion-item">
+  <h2 class="accordion-header" id="panelsStayOpen-heading{{ dep.id }}">
+    <button id="add-employees" dep-id="{{ dep.id }}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ dep.id }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ dep.id }}">
+      {{ dep }}
+    </button>
+  </h2>
+  <div id="panelsStayOpen-collapse{{ dep.id }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ dep.id }}">
+    <div class="accordion-body">
+      
+      <div id="employees{{ dep.id }}">
+                            
+      </div>
+      
+      {% get_departments dep.id as departments %}
+      {% for dep in departments %}
+        {% include "employee/item_acc.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
